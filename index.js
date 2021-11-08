@@ -39,10 +39,6 @@ function stoppingCondition(maxIterations, i, solution, lengths) {
   return isSolutionCorrect(lengths, solution)
 }
 
-function isSolutionCorrect(lengths, solution) {
-
-}
-
 function getNeighbors(solution) {
 
 }
