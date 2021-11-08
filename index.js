@@ -1,3 +1,5 @@
+const generateFirstSolution = require('./src/generateFirstSolution')
+
 function solveNonogram({ lengths, maxTabuSize, maxIterations }) {
   // const lengths = {
   //   rows:    [3, 1, 2],
@@ -30,10 +32,6 @@ function solveNonogram({ lengths, maxTabuSize, maxIterations }) {
   return bestSolution
 }
 
-function generateFirstSolution(lengths) {
-
-}
-
 function stoppingCondition(maxIterations, i, solution, lengths) {
   if (maxIterations)
     return i === maxIterations
@@ -41,7 +39,7 @@ function stoppingCondition(maxIterations, i, solution, lengths) {
   return isSolutionCorrect(lengths, solution)
 }
 
-function isSolutionCorret(lengths, solution) {
+function isSolutionCorrect(lengths, solution) {
 
 }
 
@@ -56,3 +54,5 @@ function solutionWasNotTested(tabuList, solution) {
 function fitness(solution, lengths) {
 
 }
+
+solveNonogram()
