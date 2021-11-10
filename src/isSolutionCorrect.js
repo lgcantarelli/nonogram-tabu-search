@@ -55,34 +55,8 @@ function generateColumnsFromSolution(solution) {
   transpose = m => m[0].map((x,i) => m.map(x => x[i]))
   let newSolution = transpose(solution) 
 
-  let columnClues = []
-  let tempArray = []
+  columnClues = generateRowsFromSolution(newSolution) 
 
-  for (let i = 0; i < newSolution.length; i++) {
-    let value = 1
-
-    for (let j = 0; j < newSolution[i].length; j++) {
-      let originalJ = j
-      if (newSolution[i][j] == true) {
-        if (j == (newSolution[i].length)) {
-          value +=1
-        } else {
-          while (newSolution[i][j+1] && (j < (newSolution[i].length))) {
-            value += 1
-            j++    
-          }
-        }
-        tempArray.push(value)
-        value = 1
-      }
-    }
-    if (tempArray.length > 1)
-      columnClues.push(tempArray)
-    else
-      columnClues.push(tempArray[0])
-    
-    tempArray = []
-  }
   return columnClues
 }
 
