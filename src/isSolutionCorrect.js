@@ -1,32 +1,63 @@
 function isSolutionCorrect(lengths, solution) {
-  let generatedLengths = generateLengths(solution)
+   let originalLengths = []
+  originalLengths.push(lengths.rows)
+  originalLengths.push(lengths.columns)
 
-  return (JSON.stringify(generatedLengths) == JSON.stringify(lengths))
+  let newLengths = generateLengths(solution)
+
+  return (JSON.stringify(originalLengths) == JSON.stringify(newLengths))
 }
 
 function generateLengths(solution) {
-  const lengths = []
-  let lengthsRows = []
-  let lengthsCols = []
-  let currentRow
-  let currentCol
-  let count
-  const arrayColumn = (arr, n) => arr.map(x => x[n]);
+  let lengths = []
+  let generatedRows = generateRowsFromSolution(solution)
+  let generatedColumns = generateColumnsFromSolution(solution)
 
-  for (i = 0; i < solution.length; i++) {
-    currentRow = solution[i]
-    count = currentRow.filter(Boolean).length;
-    lengthsRows.push(count)
+  lengths.push(generatedRows)
+  lengths.push(generatedColumns)
 
-    currentCol = arrayColumn(solution,i)
-    count = currentCol.filter(Boolean).length;
-    lengthsCols.push(count)
+  return (lengths)
+}
+
+function generateRowsFromSolution(solution) {
+  let rowClues = []
+  let tempArray = []
+
+  for (let i = 0; i < solution.length; i++) {
+    let value = 1
+
+    for (let j = 0; j < solution[i].length; j++) {
+      let originalJ = j
+      if (solution[i][j] == true) {
+        if (j == (solution[i].length)) {
+          value +=1
+        } else {
+          while (solution[i][j+1] && (j < (solution[i].length))) {
+            value += 1
+            j++    
+          }
+        }
+        tempArray.push(value)
+        value = 1
+      }
+    }
+    if (tempArray.length > 1)
+      rowClues.push(tempArray)
+    else
+      rowClues.push(tempArray[0])
+    
+    tempArray = []
   }
+  return rowClues
+}
 
-  lengths.push(lengthsRows)
-  lengths.push(lengthsCols)
+function generateColumnsFromSolution(solution) {
+  transpose = m => m[0].map((x,i) => m.map(x => x[i]))
+  let newSolution = transpose(solution) 
 
-  return lengths
+  columnClues = generateRowsFromSolution(newSolution) 
+
+  return columnClues
 }
 
 module.exports = isSolutionCorrect
