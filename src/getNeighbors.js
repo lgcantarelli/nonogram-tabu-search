@@ -17,7 +17,9 @@ function getNeighbors(solution) {
 function arrayShift(array) {
   let newArray = [...array]
 
-  if ((array[0] == 1) && (array[(array.length) - 1] == 1)) {
+  if (((array[0] == 1) && (array[(array.length) - 1] == 1))
+    || (((array[(array.length) - 2]) == 1)
+    && (array[(array.length) - 1] == 1))) {
     return newArray
   }
 
@@ -31,3 +33,5 @@ function arrayShift(array) {
 
   return newArray
 }
+
+module.exports = getNeighbors
