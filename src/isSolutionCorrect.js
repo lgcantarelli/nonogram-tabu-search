@@ -34,7 +34,7 @@ function generateRowsFromSolution(solution) {
         } else {
           while (solution[i][j+1] && (j < (solution[i].length))) {
             value += 1
-            j++    
+            j++
           }
         }
         tempArray.push(value)
@@ -45,7 +45,7 @@ function generateRowsFromSolution(solution) {
       rowClues.push(tempArray)
     else
       rowClues.push(tempArray[0])
-    
+
     tempArray = []
   }
   return rowClues
@@ -53,11 +53,12 @@ function generateRowsFromSolution(solution) {
 
 function generateColumnsFromSolution(solution) {
   transpose = m => m[0].map((x,i) => m.map(x => x[i]))
-  let newSolution = transpose(solution) 
+  let newSolution = transpose(solution)
 
-  columnClues = generateRowsFromSolution(newSolution) 
+  columnClues = generateRowsFromSolution(newSolution)
 
   return columnClues
 }
 
-module.exports = isSolutionCorrect
+module.exports = { isSolutionCorrect,
+                   generateLengths }
