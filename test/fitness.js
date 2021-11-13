@@ -41,7 +41,7 @@ describe('fitness', function() {
       rows:    [[1,1],5,1,3,[2,2]]
     }
 
-    const correctSolution = [
+    const solution = [
       [true, false, false, true, false],
       [true, true, true, true, true],
       [false, false, false, false, true],
@@ -49,7 +49,7 @@ describe('fitness', function() {
       [true, true, false, true, true]
     ]
 
-    assert(fitness(lengths, correctSolution) == 804)
+    assert(fitness(lengths, solution) == 804)
   })
 
   it('should return 0 for a 6x6 correct complex solution', function() {
