@@ -1,6 +1,6 @@
 const assert = require('assert')
 
-const { isSolutionCorrect } = require('../src/isSolutionCorrect')
+const isSolutionCorrect = require('../src/isSolutionCorrect')
 
 describe('isSolutionCorrect', function() {
   it('should return true for a 3x3 simple correct solution', function() {

@@ -1,4 +1,4 @@
-const { isSolutionCorrect, generateLengths } = require('./isSolutionCorrect')
+const generateLengths = require('./generateLengths')
 
 function fitness(lengths, solution) {
   let fitness1 = 0

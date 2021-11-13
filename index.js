@@ -1,24 +1,24 @@
 const generateFirstSolution = require('./src/generateFirstSolution')
+const stoppingCondition     = require('./src/stoppingCondition')
+const getNeighbors          = require('./src/getNeighbors')
+const fitness               = require('./src/fitness')
 
 function solveNonogram({ lengths, maxTabuSize, maxIterations }) {
-  // const lengths = {
-  //   rows:    [3, 1, 2],
-  //   columns: [1, 3, [1, 1]],
-  // }
-
   let bestSolution = generateFirstSolution(lengths)
   let bestCandidate = bestSolution
+
   const tabuList = []
+
   tabuList.push(bestCandidate)
 
   while (!stoppingCondition(maxIterations, i, bestSolution, lengths)) {
     const neighborhood = getNeighbors(bestCandidate)
     bestCandidate = neighborhood[0]
 
-    for (const candidate of neighborhood) {
+    neighborhood.forEach(candidate => {
       if (solutionWasNotTested(tabuList, candidate) && (fitness(candidate, lengths) > fitness(bestCandidate, lengths)))
         bestCandidate = candidate
-    }
+    })
 
     if (fitness(bestCandidate, lengths) > fitness(bestSolution, lengths))
         bestSolution = bestCandidate
@@ -32,23 +32,5 @@ function solveNonogram({ lengths, maxTabuSize, maxIterations }) {
   return bestSolution
 }
 
-function stoppingCondition(maxIterations, i, solution, lengths) {
-  if (maxIterations)
-    return i === maxIterations
 
-  return isSolutionCorrect(lengths, solution)
-}
-
-function getNeighbors(solution) {
-
-}
-
-function solutionWasNotTested(tabuList, solution) {
-
-}
-
-function fitness(solution, lengths) {
-
-}
-
-solveNonogram()
+module.exports = solveNonogram
