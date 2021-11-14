@@ -20,7 +20,7 @@ describe('solveNonogram', function() {
         [false, false, false, false, true, false]
       ]
 
-      const bestSolution = solveNonogram({ lengths, maxTabuSize: 20, maxIterations: 100000 })
+      const bestSolution = solveNonogram({ lengths, maxTabuSize: 50, maxIterations: 1000 })
 
       assert.deepEqual(bestSolution, solution)
     })
