@@ -4,7 +4,7 @@
   "description": "nonogram solver with tabu search",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/fitness.js"
   },
   "repository": {
     "type": "git",

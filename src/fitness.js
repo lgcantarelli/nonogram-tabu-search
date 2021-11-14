@@ -1,6 +1,6 @@
 const generateLengths = require('./generateLengths')
 
-function fitness(lengths, solution) {
+function fitness(solution, lengths) {
   let fitness1 = 0
   let fitness2 = 0
   let simplifiedLengths = simplifyArray(lengths.columns)

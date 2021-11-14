@@ -12,7 +12,7 @@ function solveNonogram({ lengths, maxTabuSize, maxIterations }) {
 
   tabuList.push(bestCandidate)
 
-  let i
+  let i = 0
 
   while (!stoppingCondition(maxIterations, i, bestSolution, lengths)) {
     const neighborhood = getNeighbors(bestCandidate)

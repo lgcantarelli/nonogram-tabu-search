@@ -15,7 +15,7 @@ describe('fitness', function() {
       [false, false,  true]
     ]
 
-    assert(fitness(lengths, correctSolution) == 0)
+    assert(fitness(correctSolution, lengths) == 0)
   })
 
   it('should return 0 for a 5x5 correct complex solution', function() {
@@ -32,7 +32,7 @@ describe('fitness', function() {
       [true, true, true, false, true]
     ]
 
-    assert(fitness(lengths, correctSolution) == 0)
+    assert(fitness(correctSolution, lengths) == 0)
   })
 
   it('should return 804 for a 5x5 incorrect complex solution', function() {
@@ -49,7 +49,7 @@ describe('fitness', function() {
       [true, true, false, true, true]
     ]
 
-    assert(fitness(lengths, solution) == 804)
+    assert(fitness(solution, lengths) == 804)
   })
 
   it('should return 0 for a 6x6 correct complex solution', function() {
@@ -67,7 +67,7 @@ describe('fitness', function() {
       [true, true, true, true, true,true]
     ]
 
-    assert(fitness(lengths, correctSolution) == 0)
+    assert(fitness(correctSolution, lengths) == 0)
   })
 
   it('should return 1404 for a 6x6 incorrect complex solution', function() {
@@ -85,6 +85,24 @@ describe('fitness', function() {
       [true, true, true, true, true,true]
     ]
 
-    assert(fitness(lengths, correctSolution) == 0)
+    assert(fitness(correctSolution, lengths) == 0)
+  })
+
+  it('should return ? for a 6x6 incorrect complex solution', function() {
+    const lengths = {
+      rows:    [3, 4, 4, 3, 3, 1],
+      columns: [2, 2, 5, 4, 4, 1],
+    }
+
+    const solution = [
+      [ true, true, true, false, false, false ],
+      [ true, true, true, true, false, false ],
+      [ true, true, true, true, false, false ],
+      [ true, true, true, false, false, false ],
+      [ true, true, true, false, false, false ],
+      [ true, false, false, false, false, false ]
+    ]
+
+    assert(!isNaN(fitness(solution, lengths)))
   })
 })
