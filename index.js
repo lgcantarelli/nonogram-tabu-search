@@ -30,7 +30,7 @@ function solveNonogram({ lengths, maxTabuSize, maxIterations }) {
 
     if (tabuList.length > maxTabuSize)
         tabuList.shift()
-
+        
     i++
   }
 

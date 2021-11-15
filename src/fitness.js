@@ -1,6 +1,38 @@
 const generateLengths = require('./generateLengths')
 
 function fitness(solution, lengths) {
+  let fRows = fitnessRows(solution, lengths)
+  let fColumns = fitnessColumns(solution, lengths)
+
+  return fRows + fColumns
+}
+
+function fitnessRows(solution, lengths) {
+  let fitness1 = 0
+  let fitness2 = 0
+  let simplifiedLengths = simplifyArray(lengths.rows)
+  let newSolution = intSolution(solution)
+  let simplifiedSolution = simplifyArray(newSolution)
+
+  let normalized = normalizeArrays(lengths.rows, generateLengths(solution)[0])
+  let normalizedLengths = normalized.normalizedLengths
+  let normalizedSolutionLengths = normalized.normalizedSolutionLengths
+
+  for (let i = 0; i < simplifiedLengths.length; i++) {
+    fitness1 += Math.abs(simplifiedLengths[i] - simplifiedSolution[i])
+  }
+
+  for (let i = 0; i < normalizedLengths.length; i++) {
+    for (let j = 0; j < normalizedLengths[i].length; j++) {
+      fitness2 += Math.abs(normalizedLengths[i][j] - normalizedSolutionLengths[i][j])
+    }
+  }
+  fitness2 *= 100
+
+  return fitness1 + fitness2
+}
+
+function fitnessColumns(solution, lengths) {
   let fitness1 = 0
   let fitness2 = 0
   let simplifiedLengths = simplifyArray(lengths.columns)

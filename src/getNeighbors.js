@@ -2,32 +2,47 @@ function getNeighbors(solution) {
   let neighbors = []
 
   for (let i = 0; i < solution.length; i++) {
-    tempSolution = [...solution]
+    tempSolutionRight = [...solution]
+    tempSolutionLeft = [...solution]
 
-    tempSolution[i] = arrayShift(tempSolution[i])
+    tempSolutionRight[i] = arrayShiftRight(tempSolutionRight[i])
 
-    if ((JSON.stringify(solution) != JSON.stringify(tempSolution))) {
-      neighbors.push(tempSolution)
+    if ((JSON.stringify(solution) != JSON.stringify(tempSolutionRight))) {
+      neighbors.push(tempSolutionRight)
+    }
+
+    tempSolutionLeft[i] = arrayShiftLeft(tempSolutionLeft[i])
+
+    if ((JSON.stringify(solution) != JSON.stringify(tempSolutionLeft))) {
+      neighbors.push(tempSolutionLeft)
     }
   }
 
   return neighbors
 }
 
-function arrayShift(array) {
+function arrayShiftRight(array) {
   let newArray = [...array]
-
-  if (((array[0] == 1) && (array[(array.length) - 1] == 1))
-    || (((array[(array.length) - 2]) == 1)
-    && (array[(array.length) - 1] == 1))) {
-    return newArray
-  }
 
   for (let i = 0; i < array.length; i++) {
     if (i == 0) {
       newArray[i] = array[(array.length) - 1]
     } else {
       newArray[i] = array[i-1]
+    }
+  }
+
+  return newArray
+}
+
+function arrayShiftLeft(array) {
+  let newArray = [...array]
+
+  for (let i = 0; i < array.length; i++) {
+    if (i == (array.length - 1)) {
+      newArray[i] = array[0]
+    } else {
+      newArray[i] = array[i+1]
     }
   }
 
