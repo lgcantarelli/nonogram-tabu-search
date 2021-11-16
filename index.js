@@ -16,6 +16,7 @@ function solveNonogram({ lengths, maxTabuSize, maxIterations, maxIterationsStuck
     i++
 
     const neighborhood = getNeighbors(bestCandidate)
+    bestCandidate = neighborhood[0]
 
     neighborhood.forEach(candidate => {
       if (solutionWasNotTested(tabuList, candidate) && (fitness(candidate, lengths) < fitness(bestCandidate, lengths)))
@@ -33,7 +34,7 @@ function solveNonogram({ lengths, maxTabuSize, maxIterations, maxIterationsStuck
       tabuList.shift()
   }
 
-  console.log(fitness(bestSolution, lengths))
+  console.log('FITNESS', fitness(bestSolution, lengths))
 
   return bestSolution
 }
