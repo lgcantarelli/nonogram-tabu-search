@@ -90,7 +90,7 @@ describe('solveNonogram', function() {
       const bestSolution = solveNonogram({
         lengths,
         maxIterationsStuck: 50,
-        maxTabuSize:        10
+        maxTabuSize:        50
       })
 
       assert.notDeepEqual(bestSolution, incorrectSolution)
@@ -115,8 +115,8 @@ describe('solveNonogram', function() {
 
       const bestSolution = solveNonogram({
         lengths,
-        maxIterationsStuck: 50,
-        maxTabuSize:        10
+        maxIterationsStuck: 500,
+        maxTabuSize:        50
       })
 
       assert.deepEqual(bestSolution, solution)
@@ -139,8 +139,8 @@ describe('solveNonogram', function() {
 
       const bestSolution = solveNonogram({
         lengths,
-        maxIterationsStuck: 50,
-        maxTabuSize:        10
+        maxIterationsStuck: 500,
+        maxTabuSize:        200
       })
 
       assert.deepEqual(bestSolution, solution)
@@ -168,8 +168,8 @@ describe('solveNonogram', function() {
 
       const bestSolution = solveNonogram({
         lengths,
-        maxIterationsStuck: 50,
-        maxTabuSize:        10
+        maxIterationsStuck: 500,
+        maxTabuSize:        50
       })
 
       assert.deepEqual(bestSolution, solution)
@@ -184,11 +184,27 @@ describe('solveNonogram', function() {
 
       const bestSolution = solveNonogram({
         lengths,
-        maxIterationsStuck: 50,
-        maxTabuSize:        10
+        maxIterationsStuck: 500,
+        maxTabuSize:        50
       })
 
       assert(fitness(bestSolution, lengths) === 0)
     })
+  })
+
+  it('should return the final solution for a complex 10x10 case', function() {
+    //https://homepages.cwi.nl/~aeb/games/jpuzzlegraded/jp0000022.html
+    const lengths = {
+      rows: [[1,1,2,3], [1,4,2], [1,2,1], [1,5], [1,1,2], [1,3,4], [5,1], [1,2,3], [3,3], [1,6,1]],
+      columns: [[1,1,1], [2,1,1], [1,7], [2,2,2], [3,4,1], [2,1,2,1], [3,1,2], [1,1,1,3], [2,3,2], [2,5,1]]
+    }
+
+    const bestSolution = solveNonogram({
+      lengths,
+      maxIterationsStuck: 500,
+      maxTabuSize:        100
+    })
+
+    assert(fitness(bestSolution, lengths) === 0)
   })
 })
