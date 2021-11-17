@@ -1,13 +1,7 @@
-const generateLengths = require('./generateLengths')
+const fitness = require('./fitness')
 
 function isSolutionCorrect(lengths, solution) {
-  let originalLengths = []
-  originalLengths.push(lengths.rows)
-  originalLengths.push(lengths.columns)
-
-  let newLengths = generateLengths(solution)
-
-  return (JSON.stringify(originalLengths) == JSON.stringify(newLengths))
+  return fitness(solution, lengths) === 0
 }
 
 module.exports = isSolutionCorrect

@@ -125,8 +125,8 @@ function normalizeArrays(lengths, solution) {
 
 // Converte os vetores de boolean para [0,1]
 // Exemplo: [true,true,false] = [1,0,0]
-function intSolution (solution) {
-  let newSolution = solution
+function intSolution(solution) {
+  let newSolution = [...solution.map(rows => [...rows])]
 
   for (let i = 0; i < solution.length; i++) {
     for (let j = 0; j < solution[i].length; j++) {
