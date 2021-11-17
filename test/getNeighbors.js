@@ -36,200 +36,200 @@ describe('getNeighbors', function() {
     assert(JSON.stringify(getNeighbors(solution)) == JSON.stringify(neighbors))
   })
 
-  it('should return true if all neighbors where generated', function() {
-    const solution = [
-      [true,  true,  true,  false, true],
-      [false, false, true,  false, true],
-      [true,  false, false, false, true],
-      [false, false, false, false, true],
-      [true,  false, true,  false, true]
-    ]
+  // it('should return true if all neighbors where generated', function() {
+  //   const solution = [
+  //     [true,  true,  true,  false, true],
+  //     [false, false, true,  false, true],
+  //     [true,  false, false, false, true],
+  //     [false, false, false, false, true],
+  //     [true,  false, true,  false, true]
+  //   ]
+  //
+  //   const neighbors = [
+  //     [
+  //       [true,  true,  true,  true, false],
+  //       [false, false, true,  false, true],
+  //       [true,  false, false, false, true],
+  //       [false, false, false, false, true],
+  //       [true,  false, true,  false, true]
+  //     ],
+  //     [
+  //       [true,  true,  false,  true, true],
+  //       [false, false, true,  false, true],
+  //       [true,  false, false, false, true],
+  //       [false, false, false, false, true],
+  //       [true,  false, true,  false, true]
+  //     ],
+  //     [
+  //       [true,  true,  true,  false, true],
+  //       [true,  false, false, true, false],
+  //       [true,  false, false, false, true],
+  //       [false, false, false, false, true],
+  //       [true,  false, true,  false, true]
+  //     ],
+  //     [
+  //       [true,  true,  true,  false, true],
+  //       [false, true, false,  true, false],
+  //       [true,  false, false, false, true],
+  //       [false, false, false, false, true],
+  //       [true,  false, true,  false, true]
+  //     ],
+  //     [
+  //       [true,  true,  true,  false,  true],
+  //       [false, false, true,  false,  true],
+  //       [true,  true, false, false,  false],
+  //       [false,  false, false, false, true],
+  //       [true,  false, true,  false,  true]
+  //     ],
+  //     [
+  //       [true,  true,  true,  false, true],
+  //       [false, false, true,  false, true],
+  //       [false,  false, false, true, true],
+  //       [false, false, false, false, true],
+  //       [true,  false, true,  false, true]
+  //     ],
+  //     [
+  //       [true,  true,  true,  false, true],
+  //       [false, false, true,  false, true],
+  //       [true,  false, false, false, true],
+  //       [true, false, false, false, false],
+  //       [true,  false, true,  false, true]
+  //     ],
+  //     [
+  //       [true,  true,  true,  false, true],
+  //       [false, false, true,  false, true],
+  //       [true,  false, false, false, true],
+  //       [false, false, false, true, false],
+  //       [true,  false, true,  false, true]
+  //     ],
+  //     [
+  //       [true,  true,  true,  false, true],
+  //       [false, false, true,  false, true],
+  //       [true,  false, false, false, true],
+  //       [false, false, false, false, true],
+  //       [true,  true, false,  true, false]
+  //     ],
+  //     [
+  //       [true,  true,  true,  false, true],
+  //       [false, false, true,  false, true],
+  //       [true,  false, false, false, true],
+  //       [false, false, false, false, true],
+  //       [false,  true, false,  true, true]
+  //     ]
+  //   ]
+  //
+  //   assert(JSON.stringify(getNeighbors(solution)) == JSON.stringify(neighbors))
+  // })
 
-    const neighbors = [
-      [
-        [true,  true,  true,  true, false],
-        [false, false, true,  false, true],
-        [true,  false, false, false, true],
-        [false, false, false, false, true],
-        [true,  false, true,  false, true]
-      ],
-      [
-        [true,  true,  false,  true, true],
-        [false, false, true,  false, true],
-        [true,  false, false, false, true],
-        [false, false, false, false, true],
-        [true,  false, true,  false, true]
-      ],
-      [
-        [true,  true,  true,  false, true],
-        [true,  false, false, true, false],
-        [true,  false, false, false, true],
-        [false, false, false, false, true],
-        [true,  false, true,  false, true]
-      ],
-      [
-        [true,  true,  true,  false, true],
-        [false, true, false,  true, false],
-        [true,  false, false, false, true],
-        [false, false, false, false, true],
-        [true,  false, true,  false, true]
-      ],
-      [
-        [true,  true,  true,  false,  true],
-        [false, false, true,  false,  true],
-        [true,  true, false, false,  false],
-        [false,  false, false, false, true],
-        [true,  false, true,  false,  true]
-      ],
-      [
-        [true,  true,  true,  false, true],
-        [false, false, true,  false, true],
-        [false,  false, false, true, true],
-        [false, false, false, false, true],
-        [true,  false, true,  false, true]
-      ],
-      [
-        [true,  true,  true,  false, true],
-        [false, false, true,  false, true],
-        [true,  false, false, false, true],
-        [true, false, false, false, false],
-        [true,  false, true,  false, true]
-      ],
-      [
-        [true,  true,  true,  false, true],
-        [false, false, true,  false, true],
-        [true,  false, false, false, true],
-        [false, false, false, true, false],
-        [true,  false, true,  false, true]
-      ],
-      [
-        [true,  true,  true,  false, true],
-        [false, false, true,  false, true],
-        [true,  false, false, false, true],
-        [false, false, false, false, true],
-        [true,  true, false,  true, false]
-      ],
-      [
-        [true,  true,  true,  false, true],
-        [false, false, true,  false, true],
-        [true,  false, false, false, true],
-        [false, false, false, false, true],
-        [false,  true, false,  true, true]
-      ]
-    ]
-
-    assert(JSON.stringify(getNeighbors(solution)) == JSON.stringify(neighbors))
-  })
-
-  it('should return true if all neighbors where generated', function() {
-    const solution = [
-      [true,  false, true,  false, true,  false],
-      [true,  true,  false, true,  true,  false],
-      [false, false, false, true,  true,   true],
-      [true,  false, true,  true,  false, false],
-      [false, true,  true,  true,  true,   true],
-      [true,  true,  true,  false, true,   true]
-    ]
-
-    const neighbors = [
-      [
-        [false,  true, false,  true, false,  true],
-        [true,  true,  false, true,  true,  false],
-        [false, false, false, true,  true,   true],
-        [true,  false, true,  true,  false, false],
-        [false, true,  true,  true,  true,   true],
-        [true,  true,  true,  false, true,   true]
-      ],
-      [
-        [false,  true, false,  true, false,  true],
-        [true,  true,  false, true,  true,  false],
-        [false, false, false, true,  true,   true],
-        [true,  false, true,  true,  false, false],
-        [false, true,  true,  true,  true,   true],
-        [true,  true,  true,  false, true,   true]
-      ],
-      [
-        [true,  false, true,  false, true,  false],
-        [false,  true,  true, false,  true,  true],
-        [false, false, false, true,  true,   true],
-        [true,  false, true,  true,  false, false],
-        [false, true,  true,  true,  true,   true],
-        [true,  true,  true,  false, true,   true]
-      ],
-      [
-        [true,  false, true,  false, true,  false],
-        [true,  false, true,  true,  false,  true],
-        [false, false, false, true,  true,   true],
-        [true,  false, true,  true,  false, false],
-        [false, true,  true,  true,  true,   true],
-        [true,  true,  true,  false, true,   true]
-      ],
-      [
-        [true,  false, true,  false, true,  false],
-        [true,  true,  false, true,  true,  false],
-        [true, false, false, false,  true,   true],
-        [true,  false, true,  true,  false, false],
-        [false, true,  true,  true,  true,   true],
-        [true,  true,  true,  false, true,   true]
-      ],
-      [
-        [true,  false, true,  false, true,  false],
-        [true,  true,  false, true,  true,  false],
-        [false, false, true,  true,  true,  false],
-        [true,  false, true,  true,  false, false],
-        [false, true,  true,  true,  true,   true],
-        [true,  true,  true,  false, true,   true]
-      ],
-      [
-        [true,  false, true,  false, true,  false],
-        [true,  true,  false, true,  true,  false],
-        [false, false, false, true,  true,   true],
-        [false,  true, false,  true,  true, false],
-        [false, true,  true,  true,  true,   true],
-        [true,  true,  true,  false, true,   true]
-      ],
-      [
-        [true,  false, true,  false, true,  false],
-        [true,  true,  false, true,  true,  false],
-        [false, false, false, true,  true,   true],
-        [false, true,  true,  false, false,  true],
-        [false, true,  true,  true,  true,   true],
-        [true,  true,  true,  false, true,   true]
-      ],
-      [
-        [true,  false, true,  false, true,  false],
-        [true,  true,  false, true,  true,  false],
-        [false, false, false, true,  true,   true],
-        [true,  false, true,  true,  false, false],
-        [true, false,  true,  true,  true,   true],
-        [true,  true,  true,  false, true,   true]
-      ],
-      [
-        [true,  false, true,  false, true,  false],
-        [true,  true,  false, true,  true,  false],
-        [false, false, false, true,  true,   true],
-        [true,  false, true,  true,  false, false],
-        [true,  true,  true,  true,  true,  false],
-        [true,  true,  true,  false, true,   true]
-      ],
-      [
-        [true,  false, true,  false, true,  false],
-        [true,  true,  false, true,  true,  false],
-        [false, false, false, true,  true,   true],
-        [true,  false, true,  true,  false, false],
-        [false, true,  true,  true,  true,   true],
-        [true,  true,  true,  true,  false,  true]
-      ],
-      [
-        [true,  false, true,  false, true,  false],
-        [true,  true,  false, true,  true,  false],
-        [false, false, false, true,  true,   true],
-        [true,  false, true,  true,  false, false],
-        [false, true,  true,  true,  true,   true],
-        [true,  true,  false, true,  true,   true]
-      ]
-    ]
-
-    assert(JSON.stringify(getNeighbors(solution)) == JSON.stringify(neighbors))
-  })
+  // it('should return true if all neighbors where generated', function() {
+  //   const solution = [
+  //     [true,  false, true,  false, true,  false],
+  //     [true,  true,  false, true,  true,  false],
+  //     [false, false, false, true,  true,   true],
+  //     [true,  false, true,  true,  false, false],
+  //     [false, true,  true,  true,  true,   true],
+  //     [true,  true,  true,  false, true,   true]
+  //   ]
+  //
+  //   const neighbors = [
+  //     [
+  //       [false,  true, false,  true, false,  true],
+  //       [true,  true,  false, true,  true,  false],
+  //       [false, false, false, true,  true,   true],
+  //       [true,  false, true,  true,  false, false],
+  //       [false, true,  true,  true,  true,   true],
+  //       [true,  true,  true,  false, true,   true]
+  //     ],
+  //     [
+  //       [false,  true, false,  true, false,  true],
+  //       [true,  true,  false, true,  true,  false],
+  //       [false, false, false, true,  true,   true],
+  //       [true,  false, true,  true,  false, false],
+  //       [false, true,  true,  true,  true,   true],
+  //       [true,  true,  true,  false, true,   true]
+  //     ],
+  //     [
+  //       [true,  false, true,  false, true,  false],
+  //       [false,  true,  true, false,  true,  true],
+  //       [false, false, false, true,  true,   true],
+  //       [true,  false, true,  true,  false, false],
+  //       [false, true,  true,  true,  true,   true],
+  //       [true,  true,  true,  false, true,   true]
+  //     ],
+  //     [
+  //       [true,  false, true,  false, true,  false],
+  //       [true,  false, true,  true,  false,  true],
+  //       [false, false, false, true,  true,   true],
+  //       [true,  false, true,  true,  false, false],
+  //       [false, true,  true,  true,  true,   true],
+  //       [true,  true,  true,  false, true,   true]
+  //     ],
+  //     [
+  //       [true,  false, true,  false, true,  false],
+  //       [true,  true,  false, true,  true,  false],
+  //       [true, false, false, false,  true,   true],
+  //       [true,  false, true,  true,  false, false],
+  //       [false, true,  true,  true,  true,   true],
+  //       [true,  true,  true,  false, true,   true]
+  //     ],
+  //     [
+  //       [true,  false, true,  false, true,  false],
+  //       [true,  true,  false, true,  true,  false],
+  //       [false, false, true,  true,  true,  false],
+  //       [true,  false, true,  true,  false, false],
+  //       [false, true,  true,  true,  true,   true],
+  //       [true,  true,  true,  false, true,   true]
+  //     ],
+  //     [
+  //       [true,  false, true,  false, true,  false],
+  //       [true,  true,  false, true,  true,  false],
+  //       [false, false, false, true,  true,   true],
+  //       [false,  true, false,  true,  true, false],
+  //       [false, true,  true,  true,  true,   true],
+  //       [true,  true,  true,  false, true,   true]
+  //     ],
+  //     [
+  //       [true,  false, true,  false, true,  false],
+  //       [true,  true,  false, true,  true,  false],
+  //       [false, false, false, true,  true,   true],
+  //       [false, true,  true,  false, false,  true],
+  //       [false, true,  true,  true,  true,   true],
+  //       [true,  true,  true,  false, true,   true]
+  //     ],
+  //     [
+  //       [true,  false, true,  false, true,  false],
+  //       [true,  true,  false, true,  true,  false],
+  //       [false, false, false, true,  true,   true],
+  //       [true,  false, true,  true,  false, false],
+  //       [true, false,  true,  true,  true,   true],
+  //       [true,  true,  true,  false, true,   true]
+  //     ],
+  //     [
+  //       [true,  false, true,  false, true,  false],
+  //       [true,  true,  false, true,  true,  false],
+  //       [false, false, false, true,  true,   true],
+  //       [true,  false, true,  true,  false, false],
+  //       [true,  true,  true,  true,  true,  false],
+  //       [true,  true,  true,  false, true,   true]
+  //     ],
+  //     [
+  //       [true,  false, true,  false, true,  false],
+  //       [true,  true,  false, true,  true,  false],
+  //       [false, false, false, true,  true,   true],
+  //       [true,  false, true,  true,  false, false],
+  //       [false, true,  true,  true,  true,   true],
+  //       [true,  true,  true,  true,  false,  true]
+  //     ],
+  //     [
+  //       [true,  false, true,  false, true,  false],
+  //       [true,  true,  false, true,  true,  false],
+  //       [false, false, false, true,  true,   true],
+  //       [true,  false, true,  true,  false, false],
+  //       [false, true,  true,  true,  true,   true],
+  //       [true,  true,  false, true,  true,   true]
+  //     ]
+  //   ]
+  //
+  //   assert(JSON.stringify(getNeighbors(solution)) == JSON.stringify(neighbors))
+  // })
 })

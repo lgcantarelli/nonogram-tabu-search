@@ -1,52 +1,85 @@
+const solutionWasNotTested = require('./solutionWasNotTested')
+
 function getNeighbors(solution) {
   let neighbors = []
 
-  for (let i = 0; i < solution.length; i++) {
-    tempSolutionRight = [...solution]
-    tempSolutionLeft = [...solution]
+  solution.forEach((row, i) => {
+    row.forEach((column, j) => {
+      let newNeighborRight = [...solution]
+      let newNeighborLeft = [...solution]
 
-    tempSolutionRight[i] = arrayShiftRight(tempSolutionRight[i])
+      newNeighborRight[i] = shiftPositionRight(solution[i], j)
+      newNeighborLeft[i] = shiftPositionLeft(solution[i], j)
 
-    if ((JSON.stringify(solution) != JSON.stringify(tempSolutionRight))) {
-      neighbors.push(tempSolutionRight)
-    }
+      if ((solutionWasNotTested(neighbors, newNeighborLeft)) && (solutionWasNotTested(neighbors, newNeighborRight))) {
+        if ((JSON.stringify(solution) != JSON.stringify(newNeighborRight))) {
+          neighbors.push(newNeighborRight)
+        }
 
-    tempSolutionLeft[i] = arrayShiftLeft(tempSolutionLeft[i])
-
-    if ((JSON.stringify(solution) != JSON.stringify(tempSolutionLeft))) {
-      neighbors.push(tempSolutionLeft)
-    }
-  }
+        if ((JSON.stringify(solution) != JSON.stringify(newNeighborLeft))) {
+          neighbors.push(newNeighborLeft)
+        }
+      }
+    })
+  })
 
   return neighbors
 }
 
-function arrayShiftRight(array) {
-  let newArray = [...array]
+function shiftPositionRight(array, j) {
+  let neighbor = [...array]
 
-  for (let i = 0; i < array.length; i++) {
-    if (i == 0) {
-      newArray[i] = array[(array.length) - 1]
-    } else {
-      newArray[i] = array[i-1]
-    }
+  if (j == (array.length - 1)) {
+    neighbor[j] = array[0]
+    neighbor[0] = array[j]
+  } else {
+    neighbor[j] = array[j+1]
+    neighbor[j+1] = array[j]
   }
 
-  return newArray
+  return neighbor
 }
 
-function arrayShiftLeft(array) {
-  let newArray = [...array]
+function shiftPositionLeft(array, j) {
+  let neighbor = [...array]
 
-  for (let i = 0; i < array.length; i++) {
-    if (i == (array.length - 1)) {
-      newArray[i] = array[0]
-    } else {
-      newArray[i] = array[i+1]
-    }
+  if (j == 0) {
+    neighbor[j] = array[array.length - 1]
+    neighbor[array.length - 1] = array[j]
+  } else {
+    neighbor[j] = array[j-1]
+    neighbor[j-1] = array[j]
   }
 
-  return newArray
+  return neighbor
 }
+
+// function shiftPositionUp(array, i, j) {
+//   let neighbor = [...array]
+//
+//   if (i == 0) {
+//     neighbor[i][j] = array[array.length - 1][j]
+//     neighbor[array.length - 1][j] = array[i][j]
+//   } else {
+//     neighbor[i][j] = array[i-1][j]
+//     neighbor[i-1][j] = array[i][j]
+//   }
+//
+//   return neighbor
+// }
+//
+// function shiftPositionDown(array, i, j) {
+//   let neighbor = [...array]
+//
+//   if (i == (array.length - 1)) {
+//     neighbor[i][j] = array[0][j]
+//     neighbor[0][j] = array[i][j]
+//   } else {
+//     neighbor[i][j] = array[i+1][j]
+//     neighbor[i+1][j] = array[i][j]
+//   }
+//
+//   return neighbor
+// }
 
 module.exports = getNeighbors
